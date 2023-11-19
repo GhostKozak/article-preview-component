@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;900&display=swap');
+
+:root {
+    /* Colors */
+
+    --clr-primary:  hwb(217 28% 58%);
+    --clr-secondary:  hsl(214, 17%, 51%);
+    --clr-extra-1:  hsl(212, 23%, 69%);
+    --clr-extra-2:  hsl(210, 46%, 95%);
+
+    /* Typography */
+
+    --text-size: 13px;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--clr-extra-2);
+    height: 100dvh;
+    font-size: var(--text-size);
+    font-family: "Manrope", sans-serif;
+    padding: 15px;
+
+    display: grid;
+    place-items: center;
+}
+
+main {
+    max-width: 730px;
+    display: flex;
+    border-radius: 4px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 18px 24px;
+}
+
+figure {
+    max-width: 290px;
+    border-radius: 6px 0 0 6px ;
+    overflow: hidden;
+}
+
+figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    background: #fff;
+    padding: 2.5rem 2.5rem 2rem;
+    border-radius: 0 6px 6px 0;
+    position: relative;
+}
+
+article h1 {
+    color: var(--clr-primary);
+    font-weight: 700;
+}
+
+article p {
+    color: var(--clr-extra-1);   
+    font-weight: 500; 
+}
+
+aside {
+    display: flex;
+    align-items: center;
+}
+
+aside .profile-pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+aside h2 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--clr-primary);
+}
+
+aside span {
+    font-size: 13px;
+    color: var(--clr-extra-1);
+}
+
+aside .author {
+    display: flex;
+    align-items: center;
+}
+
+aside .author .info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-left: 0.75rem;
+}
+
+.share {
+    margin-left: auto;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+}
+
+.share-icon {
+    width: 35px;
+    height: 35px;
+    background-color: var(--clr-extra-2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+}
+
+.share.active .share-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.share-tooltip {
+    width: 240px;
+    position: absolute;
+    left: -110px;
+    top: -75px;
+    background-color: var(--clr-primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    border-radius: 8px;
+    color: var(--clr-extra-1);
+    letter-spacing: 5px;
+    filter: drop-shadow(0px 5px 8px hsla(217, 19%, 35%, 0.2));
+    opacity: 0;
+    visibility: hidden;
+    transition: 450ms all ease;
+    cursor: auto;
+}
+
+.share-tooltip::before {
+    content: "";
+    border-top: 10px solid var(--clr-primary);
+    border-bottom: 0 solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 0;
+    height: 0;
+}
+
+.share-tooltip a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 992px) {
+    main {
+        flex-direction: column;
+        max-width: 327px;
+    }
+
+    figure {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 6px 6px 0 0;
+    }
+
+    article {
+        border-radius: 0 0 6px 6px;
+        padding: 1.5rem 1.5rem 1.25rem;
+    }
+
+    aside {
+        margin-top: 1rem;
+    }
+
+    .share {
+        position: static;
+        z-index: 5;
+    }
+
+    .share-tooltip {
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
+        top: auto;
+        bottom: 0px;
+        left: 0;
+        padding: 2rem 2rem;
+        border-radius: 0 0 6px 6px;
+        justify-content: flex-start;
+    }
+
+    .share-tooltip::before {
+        content: none;
+    }
+}
